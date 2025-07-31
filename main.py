@@ -1,22 +1,15 @@
 from playwright.sync_api import sync_playwright
 
-def check():
+def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
-
-        # Пример: логин
-        page.goto("https://example.com/login")
-        page.fill('input[name="username"]', "ТВОЙ_ЛОГИН")
-        page.fill('input[name="password"]', "ТВОЙ_ПАРОЛЬ")
-        page.click('button[type="submit"]')
-
-        page.wait_for_load_state("networkidle")
-        page.goto("https://example.com/protected_page")
+        page.goto("https://cerebrysquad.github.io/")
         
-        html = page.content()
-        print("✓ Получена страница, длина:", len(html))
+        print("✓ Сайт загружен")
+        print("Заголовок страницы:", page.title())
+
         browser.close()
 
 if __name__ == "__main__":
-    check()
+    main()
