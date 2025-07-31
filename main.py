@@ -5,7 +5,7 @@ async def main():
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)  # headless=False для видимости
         page = await browser.new_page()
-        await page.goto("https://cerebrysquad.xyz")
+        await page.goto("https://cerebrysquad.github.io")
         print("Opened cerebrysquad!")
 
         while True:
