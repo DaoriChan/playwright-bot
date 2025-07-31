@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: playwright-bot
+    env: python
+    buildCommand: "bash start.sh"
+    startCommand: "python main.py"
