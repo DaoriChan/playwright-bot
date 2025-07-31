@@ -8,6 +8,9 @@ async def main():
         page = await browser.new_page()
         await page.goto("https://cerebrysquad.github.io/")
         print("Страница загружена!")
-      
+
+        while True:
+            print("Still alive")
+            await asyncio.sleep(5)
 
 asyncio.run(main())
