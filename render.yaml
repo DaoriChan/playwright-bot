@@ -1,6 +1,5 @@
 services:
-  - type: web
+  - type: web          # Web Service
     name: playwright-bot
-    env: python
-    buildCommand: "bash start.sh"
-    startCommand: "python main.py"
+    env: docker        # сказать Render’у, что это Docker-проект
+    plan: free         # бесплатный тариф
