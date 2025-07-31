@@ -1,15 +1,26 @@
-from playwright.sync_api import sync_playwright
+import asyncio
+from playwright.async_api import async_playwright
 
-def main():
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        page.goto("https://cerebrysquad.github.io/")
-        
-        print("✓ Сайт загружен")
-        print("Заголовок страницы:", page.title())
+async def visit_site():
+    print("Запуск Playwright...")
+    async with async_playwright() as p:
+        browser = await p.chromium.launch()
+        page = await browser.new_page()
+        try:
+            await page.goto("https://cerebrysquad.github.io/")
+            title = await page.title()
+            print(f"Сайт загружен\nЗаголовок страницы: {title}")
+        except Exception as e:
+            print("Ошибка:", e)
+        await browser.close()
 
-        browser.close()
+async def keep_alive():
+    while True:
+        print("Бот работает...")
+        await asyncio.sleep(5)
 
-if __name__ == "__main__":
-    main()
+async def main():
+    await visit_site()
+    await keep_alive()
+
+asyncio.run(main())
