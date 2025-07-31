@@ -1,5 +1,0 @@
-services:
-  - type: web          # Web Service
-    name: playwright-bot
-    env: docker        # сказать Render’у, что это Docker-проект
-    plan: free         # бесплатный тариф
